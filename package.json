@@ -3,18 +3,18 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://szhosan.github.io/goit-js-hw-08/",
+  "homepage": "https://szhosan.github.io/goit-js-hw-09/",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
+    "build": "parcel build src/*.html --public-url /parcel-project-template/"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://szhosan.github.io/goit-js-hw-09/"
   },
   "keywords": [],
-  "author": "",
-  "license": "",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "license": "ISC",
   "bugs": {
     "url": ""
   },
@@ -24,10 +24,5 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
-  },
-  "dependencies": {
-    "@vimeo/player": "^2.16.3",
-    "lodash.throttle": "^4.1.1",
-    "simplelightbox": "^2.10.2"
   }
 }
