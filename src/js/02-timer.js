@@ -2,6 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 let userSelectedDate;
+let intervalID;
 
 const options = {
   enableTime: true,
@@ -26,7 +27,7 @@ const INTERVAL_UPDATE_INTERFACE = 1000;
 
 refs.buttStartRef.setAttribute('disabled', '');
 refs.buttStartRef.addEventListener('click', () => {
-  setInterval(updateTimeInterface, INTERVAL_UPDATE_INTERFACE);
+  intervalID = setInterval(updateTimeInterface, INTERVAL_UPDATE_INTERFACE);
 });
 
 flatpickr('#datetime-picker', options);
@@ -40,8 +41,13 @@ function checkSelectedDate() {
 }
 
 function updateTimeInterface() {
-  const time = convertMs(userSelectedDate - new Date().getTime());
-  console.log(time);
+  const difference = userSelectedDate - new Date().getTime();
+  //console.log(`difference ${difference}`);
+  if (difference < 1000) {
+    clearInterval(intervalID);
+  }
+  const time = convertMs(difference);
+  //console.log(time);
   refs.spanDaysRef.textContent = time.days;
   refs.spanHoursRef.textContent = time.hours;
   refs.spanMinutesRef.textContent = time.minutes;
