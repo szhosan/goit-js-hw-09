@@ -19,9 +19,9 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(`Fullfield promise ${position} in ${delay}ms`);
+        resolve({position, delay});
       } else {
-        reject(`Rejected promise ${position} in ${delay}ms`);
+        reject({position, delay});
       }
     }, delay);
   });
@@ -35,8 +35,8 @@ function runPromiseCreation(e) {
   let delay = firstDelay;
   for (let i = 1; i <= promiseAmount; i += 1) {
     createPromise(i, delay)
-      .then(succsess => Notify.success(succsess))
-      .catch(error => Notify.failure(error));
+      .then(({position, delay}) => Notify.success(`Fulfilled promise ${position} in ${delay}ms`))
+      .catch(({position, delay}) => Notify.failure(`Rejected promise ${position} in ${delay}ms`));
     delay += delayStep;
   }
 }
