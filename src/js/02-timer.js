@@ -44,7 +44,7 @@ function updateTimeInterface() {
   const difference = userSelectedDate - new Date().getTime();
   //console.log(`difference ${difference}`);
   if (difference < 1000) {
-    clearInterval(intervalID);    
+    clearInterval(intervalID);
   }
   const time = convertMs(difference);
   //console.log(time);
@@ -52,7 +52,6 @@ function updateTimeInterface() {
   refs.spanHoursRef.textContent = time.hours;
   refs.spanMinutesRef.textContent = time.minutes;
   refs.spanSecondsRef.textContent = time.seconds;
-  
 }
 
 function convertMs(ms) {
