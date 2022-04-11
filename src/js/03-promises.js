@@ -12,6 +12,8 @@ formRef.addEventListener('input', e => {
   } else formRef.elements.submit.removeAttribute('disabled');
 });
 
+console.log(formRef.elements);
+
 formRef.addEventListener('submit', runPromiseCreation);
 
 function createPromise(position, delay) {
@@ -19,9 +21,9 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve({position, delay});
+        resolve({ position, delay });
       } else {
-        reject({position, delay});
+        reject({ position, delay });
       }
     }, delay);
   });
@@ -35,8 +37,8 @@ function runPromiseCreation(e) {
   let delay = firstDelay;
   for (let i = 1; i <= promiseAmount; i += 1) {
     createPromise(i, delay)
-      .then(({position, delay}) => Notify.success(`Fulfilled promise ${position} in ${delay}ms`))
-      .catch(({position, delay}) => Notify.failure(`Rejected promise ${position} in ${delay}ms`));
+      .then(({ position, delay }) => Notify.success(`Fulfilled promise ${position} in ${delay}ms`))
+      .catch(({ position, delay }) => Notify.failure(`Rejected promise ${position} in ${delay}ms`));
     delay += delayStep;
   }
 }
